@@ -1,11 +1,24 @@
-from pdf_parser import extract_text
 from summarizer import simplify_consent_form
+from risk_extractor import extract_risks
 
-pdf_path = "../sample_pdfs/surgery_consent.pdf"
+text = """
+Procedure:
+Appendectomy
 
-text = extract_text(pdf_path)
+Benefits:
+Relief from appendicitis.
+
+Risks:
+- Infection
+- Bleeding
+- Adverse reaction to anesthesia
+- Blood clots
+- Injury to nearby organs
+"""
 
 summary = simplify_consent_form(text)
+risks = extract_risks(text)
 
-print("\n===== PATIENT FRIENDLY SUMMARY =====\n")
 print(summary)
+print("\nDetected Risks:\n")
+print(risks)
