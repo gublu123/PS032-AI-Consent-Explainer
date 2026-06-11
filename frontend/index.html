@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consent Form Explainer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🏥 AI Consent Form Explainer</h1>
+
+        <p class="subtitle">
+            Upload a medical consent form and get a simplified explanation.
+        </p>
+
+        <input type="file" id="pdfFile" accept=".pdf">
+
+        <button onclick="uploadPDF()">
+            Generate Summary
+        </button>
+
+        <div id="loader" class="loader hidden">
+            Processing PDF...
+        </div>
+
+        <div class="card">
+            <h2>📋 Simplified Summary</h2>
+            <pre id="summary"></pre>
+        </div>
+
+        <div class="card">
+            <h2>⚠ Risks</h2>
+            <pre id="risks"></pre>
+        </div>
+
+        <div class="card">
+            <h2>❓ Missing Risks</h2>
+            <pre id="missingRisks"></pre>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
