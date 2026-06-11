@@ -4,8 +4,16 @@ from summarizer import simplify_consent_form
 from risk_extractor import extract_risks, extract_summary_risks
 from verifier import verify_risks
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
