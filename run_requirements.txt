@@ -1,0 +1,21 @@
+cd C:\Users\Arighna\PS032-AI-Consent-Explainer\backend
+python -m uvicorn api:app --reload
+
+
+
+cd C:\Users\Arighna\PS032-AI-Consent-Explainer\frontend
+python -m http.server 5500
+
+
+
+
+ollama serve
+Expected output:
+
+Listening on 127.0.0.1:11434
+
+
+ollama run llama3.2
+
+
+

@@ -1,12 +1,12 @@
 import requests
 
 
-def extract_risks(text):
+def extract_risks(text, model):
 
     prompt = f"""
 You are a medical risk extraction assistant.
 
-Extract all risks, complications, side effects, and warnings mentioned in the consent form.
+Extract ALL risks, complications, side effects, warnings, and possible outcomes mentioned in the consent form.
 
 Rules:
 1. Return only bullet points.
@@ -21,21 +21,33 @@ Consent Form:
     response = requests.post(
         "http://localhost:11434/api/generate",
         json={
-            "model": "llama3",
+            "model": model,
             "prompt": prompt,
             "stream": False
         }
     )
 
-    return response.json()["response"]
+    if response.status_code != 200:
+        raise Exception(
+            f"Ollama Error ({response.status_code}): {response.text}"
+        )
+
+    data = response.json()
+
+    if "response" not in data:
+        raise Exception(
+            f"Invalid Ollama Response: {data}"
+        )
+
+    return data["response"]
 
 
-def extract_summary_risks(summary):
+def extract_summary_risks(summary, model):
 
     prompt = f"""
 You are a medical risk extraction assistant.
 
-Extract all risks mentioned in the summary.
+Extract ALL risks mentioned in the patient-friendly summary.
 
 Rules:
 1. Return only bullet points.
@@ -50,10 +62,22 @@ Summary:
     response = requests.post(
         "http://localhost:11434/api/generate",
         json={
-            "model": "llama3",
+            "model": model,
             "prompt": prompt,
             "stream": False
         }
     )
 
-    return response.json()["response"]
+    if response.status_code != 200:
+        raise Exception(
+            f"Ollama Error ({response.status_code}): {response.text}"
+        )
+
+    data = response.json()
+
+    if "response" not in data:
+        raise Exception(
+            f"Invalid Ollama Response: {data}"
+        )
+
+    return data["response"]

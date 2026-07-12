@@ -1,0 +1,36 @@
+PATIENT CONSENT FORM
+
+Patient Name: Rahul Sharma
+Age: 34
+Gender: Male
+
+Hospital: City Care Multispeciality Hospital
+Date: 12 June 2026
+
+Purpose of Treatment:
+The patient is scheduled for a laparoscopic appendectomy (appendix removal surgery). The procedure, expected benefits, risks, and alternatives have been explained to the patient.
+
+Risks Explained:
+Possible risks include infection, bleeding, allergic reaction to anesthesia, injury to surrounding organs, and the possibility of requiring additional surgery.
+
+Benefits:
+The surgery is expected to remove the inflamed appendix, relieve pain, and prevent complications such as rupture.
+
+Alternatives:
+The patient has been informed about non-surgical management options, including antibiotics, although surgery is the recommended treatment.
+
+Privacy and Data Usage:
+The patient's medical information will be stored securely and may be used for treatment, billing, quality improvement, and medical research purposes. Personal identifiers will be removed before any research use whenever possible.
+
+Voluntary Participation:
+The patient understands that participation is voluntary and that consent may be withdrawn before the procedure.
+
+Acknowledgment:
+I confirm that I have read and understood the information provided above. I have had the opportunity to ask questions, and all my questions have been answered to my satisfaction.
+
+Patient Signature: Rahul Sharma
+
+Doctor Name: Dr. Priya Mehta
+Doctor Signature: Dr. Priya Mehta
+
+Date Signed: 12 June 2026

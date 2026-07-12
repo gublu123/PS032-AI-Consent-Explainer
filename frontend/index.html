@@ -16,32 +16,100 @@
         <h1>🏥 AI Consent Form Explainer</h1>
 
         <p class="subtitle">
-            Upload a medical consent form and get a simplified explanation.
+            Upload a medical consent form and generate a patient-friendly explanation using AI.
         </p>
 
-        <input type="file" id="pdfFile" accept=".pdf">
+        <!-- Single Model Selection -->
+        <label><strong>Select AI Model</strong></label>
 
-        <button onclick="uploadPDF()">
-            Generate Summary
-        </button>
+        <select id="modelSelect">
+            <option>Loading models...</option>
+        </select>
+
+        <br><br>
+
+        <!-- Compare Models -->
+        <label><strong>Select Models for Comparison</strong></label>
+
+        <div id="modelCheckboxes" class="model-checkboxes">
+
+            <!-- Populated automatically from script.js -->
+
+        </div>
+
+        <br>
+
+        <!-- Upload File -->
+        <label><strong>Upload Consent Form</strong></label>
+
+        <input
+            type="file"
+            id="pdfFile"
+            accept=".pdf,.txt"
+        >
+
+        <br><br>
+
+        <!-- Buttons -->
+
+        <div class="button-group">
+
+            <button onclick="uploadPDF()">
+                📄 Generate Summary
+            </button>
+
+            <button onclick="compareModels()">
+                ⚖ Compare Models
+            </button>
+
+        </div>
+
+        <!-- Loader -->
 
         <div id="loader" class="loader hidden">
-            Processing PDF...
+
+            Processing...
+
         </div>
 
+        <hr>
+
+        <!-- Single Model Output -->
+
         <div class="card">
+
             <h2>📋 Simplified Summary</h2>
+
             <pre id="summary"></pre>
+
         </div>
 
         <div class="card">
-            <h2>⚠ Risks</h2>
+
+            <h2>⚠ Extracted Risks</h2>
+
             <pre id="risks"></pre>
+
         </div>
 
         <div class="card">
+
             <h2>❓ Missing Risks</h2>
+
             <pre id="missingRisks"></pre>
+
+        </div>
+
+        <hr>
+
+        <!-- Comparison Results -->
+
+        <h2>📊 Compare Models</h2>
+
+        <div id="comparisonResults">
+
+            <!-- Comparison cards will appear here -->
+
         </div>
 
     </div>

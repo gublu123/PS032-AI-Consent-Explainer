@@ -1,24 +1,29 @@
+import re
+
 def verify_risks(original_risks, summary_risks):
 
     missing = []
 
     original_lines = original_risks.split("\n")
 
+    summary_text = summary_risks.lower()
+
     for risk in original_lines:
 
         risk = risk.strip()
 
-        # Ignore empty lines
         if not risk:
             continue
 
-        # Only process bullet points
-        if not risk.startswith("•"):
+        # Remove bullets, numbering and markdown
+        risk = re.sub(r"^[\-\*\•\d\.\)\s]+", "", risk)
+
+        risk = risk.replace("**", "").strip()
+
+        if len(risk) < 3:
             continue
 
-        risk_text = risk.replace("•", "").strip()
-
-        if risk_text.lower() not in summary_risks.lower():
-            missing.append(risk_text)
+        if risk.lower() not in summary_text:
+            missing.append(risk)
 
     return missing

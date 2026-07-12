@@ -1,4 +1,4 @@
-# AI-Powered Consent Form Explainer
+# 🏥 AI Consent Form Explainer with Multi-LLM Comparison
 
 ## Problem Statement
 
@@ -6,104 +6,231 @@ Design a consent-form explainer that translates procedure risks into patient-fri
 
 ## Project Overview
 
-Medical consent forms often contain complex terminology that can be difficult for patients to understand. This project uses Artificial Intelligence and Natural Language Processing (NLP) to convert medical consent forms into simple, patient-friendly language while preserving the original intent and risks.
+Medical consent forms often contain complex medical terminology that can be difficult for patients to understand.
+
+This project uses Artificial Intelligence (AI) and Large Language Models (LLMs) running locally through Ollama to simplify medical consent forms into patient-friendly language while preserving the original legal meaning and medical risks.
+
+The application also compares multiple AI models based on response quality, response time, and risk preservation to help identify the most suitable model for medical consent summarization.
 
 ## Objectives
 
-* Extract text from medical consent form PDFs.
-* Simplify medical terminology using a Large Language Model (LLM).
-* Generate patient-friendly summaries.
-* Improve healthcare communication and accessibility.
-* Support future enhancements such as risk extraction and multilingual explanations.
+- Extract text from medical consent form PDFs.
+- Generate patient-friendly summaries using AI.
+- Extract medical risks from consent forms.
+- Verify that important risks are preserved in the summary.
+- Compare multiple Large Language Models (LLMs).
+- Measure response time of different AI models.
+- Improve healthcare communication and patient understanding.
 
 ## Features Implemented
 
-### PDF Text Extraction
+### 📄 PDF & TXT Processing
 
-* Upload and process medical consent forms.
-* Extract text using PDF parsing techniques.
+- Upload medical consent forms in PDF or TXT format.
+- Extract text using **pdfplumber**.
+- Supports multiple document formats.
 
-### AI-Based Simplification
+---
 
-* Uses Llama 3 running locally through Ollama.
-* Converts complex medical language into easy-to-understand summaries.
+### 🤖 AI-Powered Consent Form Simplification
 
-### Patient-Friendly Output
+- Simplifies complex medical consent forms into patient-friendly language.
+- Preserves the legal meaning and important medical information.
+- Generates structured summaries including:
+  - Procedure
+  - Benefits
+  - Risks
+  - Recovery
 
-* Presents information in a structured format.
-* Maintains the original meaning of the consent form.
+---
+
+### ⚠️ Medical Risk Extraction
+
+- Automatically extracts risks, complications, side effects, and warnings from the original consent form.
+- Uses AI-powered risk extraction for improved accuracy.
+
+---
+
+### ✅ Risk Verification
+
+- Compares risks extracted from the original consent form with those present in the generated summary.
+- Detects and reports any missing risks to ensure important medical information is not omitted.
+
+---
+
+### 🔍 Multi-LLM Comparison
+
+- Compare multiple Large Language Models simultaneously.
+- Supports:
+  - Llama 3.2
+  - Qwen 3.5
+  - Mistral
+  - Gemma 3
+  - DeepSeek R1
+
+---
+
+### ⏱️ Performance Benchmarking
+
+- Measures response time for each AI model.
+- Displays the fastest model automatically.
+
+---
+
+### 🔄 Dynamic Ollama Model Detection
+
+- Automatically detects all installed Ollama models.
+- No code modification is required when new models are installed.
+
+---
+
+### 🌐 Interactive Web Interface
+
+- Upload consent forms through a simple web interface.
+- Select any installed AI model.
+- Compare multiple models using checkboxes.
+- Display summaries, extracted risks, missing risks, and performance metrics.
 
 ## System Workflow
 
-Consent Form PDF
-↓
+## System Workflow
+
+Medical Consent Form (PDF/TXT)
+            │
+            ▼
 Text Extraction (pdfplumber)
-↓
-Llama 3 (Ollama)
-↓
+            │
+            ▼
+Select AI Model(s)
+            │
+            ▼
+Ollama (Local LLM)
+            │
+            ▼
 Patient-Friendly Summary
+            │
+     ┌──────┴────────┐
+     ▼               ▼
+Risk Extraction   Summary Risk Extraction
+     │               │
+     └──────┬────────┘
+            ▼
+Risk Verification
+            │
+            ▼
+Compare Multiple Models
+            │
+            ▼
+Performance Analysis
+(Response Time • Missing Risks • Fastest Model)
 
 ## Technology Stack
 
-### Programming Language
+### 💻 Programming Language
 
-* Python
+- Python
 
-### Libraries
+---
 
-* pdfplumber
-* requests
+### ⚙️ Backend Framework
 
-### AI Model
+- FastAPI
 
-* Llama 3
+---
 
-### AI Runtime
+### 🌐 Frontend
 
-* Ollama
+- HTML5
+- CSS3
+- JavaScript
 
-### Version Control
+---
 
-* Git
-* GitHub
+### 📚 Python Libraries
+
+- FastAPI
+- Uvicorn
+- pdfplumber
+- requests
+- python-multipart
+
+---
+
+### 🤖 Supported AI Models
+
+- Llama 3.2
+- Qwen 3.5
+- Mistral
+- Gemma 3
+- DeepSeek R1
+
+---
+
+### 🧠 AI Runtime
+
+- Ollama (Local LLM Runtime)
+
+---
+
+### 🗂 Version Control
+
+- Git
+- GitHub
+
+---
+
+### 🖥 Development Environment
+
+- Visual Studio Code
 
 ## Project Structure
 
 PS032-AI-Consent-Explainer
 
 ├── backend
+│   ├── api.py
 │   ├── main.py
 │   ├── pdf_parser.py
-│   └── summarizer.py
-
+│   ├── summarizer.py
+│   ├── risk_extractor.py
+│   ├── verifier.py
+│
 ├── frontend
-
-├── docs
-
+│   ├── index.html
+│   ├── script.js
+│   ├── style.css
+│
 ├── sample_pdfs
-
+│
 ├── requirements.txt
-
+│
 └── README.md
 
 ## Current Results
 
 Successfully implemented:
 
-* PDF text extraction
-* Llama 3 integration
-* Consent form simplification
-* Local AI processing
+- PDF and TXT document processing
+- AI-powered consent form simplification
+- Medical risk extraction
+- Missing risk verification
+- Multi-LLM comparison
+- Dynamic Ollama model detection
+- Response time benchmarking
+- Fastest model identification
+- Local AI processing using Ollama
+- Interactive FastAPI web application
 
 ## Future Enhancements
 
-* Risk Extraction Module
-* Risk Verification System
-* Readability Score Analysis
-* Multilingual Support (Kannada, Hindi, Bengali)
-* FastAPI Backend
-* React Frontend Dashboard
-* Voice-Based Consent Explanation
+- AI-powered semantic risk verification
+- Readability score analysis
+- Downloadable PDF reports
+- Doctor review mode
+- Multilingual support (Kannada, Hindi, Bengali)
+- Voice-based consent explanation
+- Cloud deployment
+- User authentication and secure patient records
 
 ## Author
 
