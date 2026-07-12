@@ -1,0 +1,148 @@
+1. Problem Statement
+
+Medical consent forms are essential legal documents that explain medical procedures, their benefits, risks, and possible complications before treatment. However, these documents are often written using complex medical terminology and legal language, making them difficult for many patients to understand.
+
+As a result, patients may sign consent forms without fully understanding the procedure, associated risks, or available alternatives. This reduces informed decision-making and can affect the quality of communication between healthcare providers and patients.
+
+Our project addresses this problem by using Artificial Intelligence to convert complex medical consent forms into clear, patient-friendly summaries while ensuring that critical medical risks are not omitted.
+
+2. Objectives
+
+The primary objectives of this project are:
+
+Extract text from medical consent forms in PDF or TXT format.
+Simplify complex medical terminology into easy-to-understand language.
+Preserve the original legal meaning of the consent document.
+Automatically identify and extract medical risks and complications.
+Verify whether important risks are retained in the simplified summary.
+Compare multiple Large Language Models (LLMs) to determine which model provides the best balance of speed and completeness.
+3. Methodology
+
+Our solution consists of several stages.
+
+Step 1 – Document Upload
+
+The user uploads a medical consent form in PDF or TXT format through the web interface.
+
+Step 2 – Text Extraction
+
+The backend extracts readable text from the uploaded document using pdfplumber.
+
+Step 3 – AI-Based Simplification
+
+The extracted text is sent to a selected Large Language Model running locally through Ollama.
+
+The AI generates a simplified summary divided into sections such as:
+
+Procedure
+Benefits
+Risks
+Recovery
+
+making the document easier for patients to understand.
+
+Step 4 – Risk Extraction
+
+The system extracts all risks, complications, warnings, and side effects from the original consent form.
+
+It also extracts risks mentioned in the generated summary.
+
+Step 5 – Risk Verification
+
+The extracted risks from both documents are compared.
+
+If any important risk from the original document is missing in the simplified summary, it is highlighted.
+
+Step 6 – Multi-Model Comparison
+
+The same document is processed by multiple LLMs including:
+
+Qwen 3.5
+Llama 3.2
+Gemma 3
+Mistral
+DeepSeek-R1
+
+The system measures:
+
+Processing time
+Missing risks
+Generated summary quality
+
+allowing users to compare model performance.
+
+4. Implementation
+
+The project is implemented using a client-server architecture.
+
+Frontend
+HTML
+CSS
+JavaScript
+
+Provides:
+
+File upload
+Model selection
+Multi-model comparison
+Display of summaries and extracted risks
+Backend
+
+Developed using FastAPI.
+
+Responsible for:
+
+Receiving uploaded files
+Extracting text
+Communicating with Ollama
+Running AI models
+Risk verification
+Returning results
+AI Runtime
+
+We use Ollama to run open-source Large Language Models locally.
+
+Supported models include:
+
+Qwen 3.5
+Llama 3.2
+Gemma 3
+Mistral
+DeepSeek-R1
+
+Running models locally improves privacy because sensitive medical documents are not uploaded to external cloud services.
+
+5. Results
+
+The developed system successfully:
+
+Generates patient-friendly summaries.
+Preserves important medical information.
+Automatically extracts medical risks.
+Detects missing risks in simplified summaries.
+Compares multiple AI models.
+Measures processing time for each model.
+
+Example comparison:
+
+Model	Response Time	Missing Risks
+Llama 3.2	~18 s	0
+Mistral		~20 s	2
+Gemma 3		~28 s	0
+DeepSeek-R1	~39 s	0
+Qwen 3.5	~151 s	4
+
+This comparison demonstrates that different models vary in both speed and completeness, helping users choose the most suitable model.
+
+6. Future Scope
+
+This project can be extended in several ways:
+
+Support multiple regional languages such as Kannada, Hindi, and Bengali.
+Integrate OCR for scanned consent forms.
+Add speech synthesis to read summaries aloud.
+Provide readability scores for summaries.
+Integrate with hospital Electronic Health Record (EHR) systems.
+Develop a mobile application for patients.
+Fine-tune medical LLMs for higher accuracy.
+Deploy the system securely for hospital use with role-based access control.

@@ -69,6 +69,9 @@ def get_models():
 
         for model in data.get("models", []):
 
+            if model["name"].startswith("qwen3.5"):
+                continue
+
             models.append(model["name"])
 
         return {

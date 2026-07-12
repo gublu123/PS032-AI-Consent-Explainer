@@ -59,6 +59,11 @@ function populateModelDropdown(models) {
 
     models.forEach(model => {
 
+        // Hide Qwen
+        if (model.startsWith("qwen3.5")) {
+            return;
+        }
+
         const option = document.createElement("option");
 
         option.value = model;
@@ -66,10 +71,8 @@ function populateModelDropdown(models) {
         option.textContent = beautifyModelName(model);
 
         // Default model
-        if (model.startsWith("qwen3.5")) {
-
+        if (model.startsWith("llama3.2")) {
             option.selected = true;
-
         }
 
         select.appendChild(option);
@@ -100,6 +103,11 @@ function populateModelCheckboxes(models) {
 
     models.forEach(model => {
 
+        // Hide Qwen
+        if (model.startsWith("qwen3.5")) {
+            return;
+        }
+
         const label = document.createElement("label");
 
         label.style.display = "block";
@@ -116,13 +124,10 @@ function populateModelCheckboxes(models) {
 
         // Default selected models
         if (
-
-            model.startsWith("qwen3.5") ||
-
-            model.startsWith("llama3.2") ||
-
-            model.startsWith("gemma3")
-
+            model.startsWith("deepseek-r1") ||
+            model.startsWith("gemma3") ||
+            model.startsWith("mistral") ||
+            model.startsWith("llama3.2")
         ) {
 
             checkbox.checked = true;
@@ -155,21 +160,18 @@ function beautifyModelName(model) {
 
     const names = {
 
-        "qwen3.5:4b": "⭐ Qwen 3.5 (4B)",
-
-        "llama3.2": "🦙 Llama 3.2",
-
-        "llama3.2:3b": "🦙 Llama 3.2 (3B)",
-
-        "mistral": "🌪️ Mistral",
-
-        "mistral:7b": "🌪️ Mistral (7B)",
+        "deepseek-r1": "🧠 DeepSeek-R1",
+        "deepseek-r1:latest": "🧠 DeepSeek-R1",
 
         "gemma3": "💎 Gemma 3",
+        "gemma3:latest": "💎 Gemma 3",
 
-        "gemma3:4b": "💎 Gemma 3 (4B)",
+        "mistral": "🌪️ Mistral",
+        "mistral:latest": "🌪️ Mistral",
 
-        "deepseek-r1": "🧠 DeepSeek-R1"
+        "llama3.2": "🦙 Llama 3.2",
+        "llama3.2:latest": "🦙 Llama 3.2",
+        "llama3.2:3b": "🦙 Llama 3.2 (3B)"
 
     };
 

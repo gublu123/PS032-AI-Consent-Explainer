@@ -1,6 +1,5 @@
 import requests
 
-
 def simplify_consent_form(text, model):
 
     prompt = f"""
@@ -13,11 +12,10 @@ Rules:
 2. Do not remove any risks.
 3. Explain medical terms in plain English.
 4. Create sections:
-   - Procedure
-   - Benefits
-   - Risks
-   - Recovery
-5. If information is missing, say "Not specified".
+- Procedure
+- Benefits
+- Risks
+- Recovery
 
 Consent Form:
 
@@ -29,9 +27,17 @@ Consent Form:
         json={
             "model": model,
             "prompt": prompt,
-            "stream": False
+            "stream": False,
+            "options": {
+                "num_predict": 2048
+            }
         }
     )
+
+    print("\n========== RAW RESPONSE ==========")
+    print(response.status_code)
+    print(response.text)
+    print("==================================\n")
 
     if response.status_code != 200:
         raise Exception(
@@ -40,9 +46,9 @@ Consent Form:
 
     data = response.json()
 
-    if "response" not in data:
-        raise Exception(
-            f"Invalid Ollama Response: {data}"
-        )
+    answer = (
+        data.get("response", "").strip()
+        or data.get("thinking", "").strip()
+    )
 
-    return data["response"]
+    return answer
